@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Treasure
+  - NonTreasure
+  - NonTreasure Hole
+  - Swamp
   layers:
   - Default
   - TransparentFX
@@ -47,4 +50,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 124707141
+    locked: 0
+  - name: Under Player
+    uniqueID: 3978042559
     locked: 0

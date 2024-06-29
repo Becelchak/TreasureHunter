@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class Treasure : MonoBehaviour
 {
+
+    public string textHelp;
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     public void SetExcavated()
     {
         var selfSprite = GetComponent<SpriteRenderer>();
         selfSprite.sprite = Resources.Load<Sprite>("Material/Hole");
         selfSprite.color = new Color(255,255,255,1);
+
+        audioSource.Play();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

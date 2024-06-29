@@ -27,4 +27,9 @@ public class GameManager : MonoBehaviour
     {
         timer += time;
     }
+
+    public void RemoveTime(double time)
+    {
+        timer -= time;
+    }
 }
