@@ -40,6 +40,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (!gameManager.tutorialEnd)
+            return;
+
         if (nowTreasure.text == "" && treasureCount > 0)
             nowTreasure.text = treasureList[0].textHelp;
         if (canDig && Input.GetKeyDown(KeyCode.E) && treasureInZone != null)
@@ -52,7 +55,7 @@ public class PlayerController : MonoBehaviour
             treasureInZone.gameObject.GetComponent<Collider2D>().enabled = false;
 
             Destroy(treasureInZone);
-            gameManager.AddTime(15);
+            gameManager.AddTime(5);
             treasureCount -= 1;
         }
         else if (canDig && Input.GetKeyDown(KeyCode.E) && treasureInZone == null) 
@@ -100,6 +103,8 @@ public class PlayerController : MonoBehaviour
         {
             sprintModifier = 1;
             stamina += Time.fixedDeltaTime * 4;
+            if(stamina > 100)
+                stamina = 100;
             staminaImage.fillAmount = stamina / 100;
         }
 

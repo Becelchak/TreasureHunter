@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,10 +9,23 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI textMain;
     [SerializeField]
     private double timer = 120;
+    [SerializeField]
+    private CanvasGroup startPage;
+    public bool tutorialEnd;
 
     void Update()
     {
-        Countdown();
+        if (!tutorialEnd)
+        {
+            startPage.alpha = 1.0f;
+            startPage.interactable = true;
+            startPage.blocksRaycasts = true;
+        }
+        else
+        {
+            Countdown();
+        }
+       
     }
 
     void Countdown()
@@ -32,4 +43,15 @@ public class GameManager : MonoBehaviour
     {
         timer -= time;
     }
+
+    public void TutorialEnd() 
+    {
+        tutorialEnd = true;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
 }
